@@ -1,2 +1,4 @@
 # bingo
-Bingo application with Web
+
+## about
+- 新入生歓迎会用のビンゴアプリケーション
