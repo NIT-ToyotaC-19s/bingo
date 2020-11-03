@@ -23,10 +23,9 @@ async function rollBingo (array){
             };
 
             for(let i =1;i<=runAroundMax+1;i++){
+                await sleep((Math.pow(i/runAroundMax,4)*500));
                 $(`#${i%76}`).addClass("run-around");
-                $(`#${i%75 ==  1 ? maxBingoNum :i%76-1}`).removeClass("run-around");
-                await sleep((Math.pow(i/runAroundMax,3)*400));
-                console.log(i%75);
+                $(`#${i%76 ==  1 ? maxBingoNum :i%76-1}`).removeClass("run-around");
             }
             
             async function twinkleNumber(number){
