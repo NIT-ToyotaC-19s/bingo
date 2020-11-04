@@ -38,12 +38,13 @@ async function rollBingo (number){
             };
 
             await twinkleNumber(number);
+            
+            $(".last-number").addClass("used-number");
+            $(".last-number").removeClass("last-number");
 
             $(".table-number").removeClass("run-around");
-            $(`#${number}`).addClass("used-number");
-            array.shift();
+            $(`#${number}`).addClass("last-number");
         }
-        return array;
 }
 function generateTable(rowLength,maximum){
     let table="";

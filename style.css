@@ -1,14 +1,25 @@
+body{
+    background-color: black;
+}
 #table{
     margin-top:10vh;
     text-align: center;
 }
-
+.padding-cell{
+    color:black;
+    border:outset black 5px;
+}
 .used-number{
-    background-color:aqua;
+    background-color:lime;
+    color:white;
 }
 .run-around{
-    background-color: yellow;
+    background-color: orange;
 }
 .table-number{
     border:outset 5px;
+    color:whitesmoke;
+}
+.last-number{
+    background-color: red;
 }
