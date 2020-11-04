@@ -9,8 +9,7 @@ function shuffle(array){
     return array;
 }
 
-async function rollBingo (array){
-        let number = array[0];
+async function rollBingo (number){
         console.log(number);
 
         if(!isNaN(number)){
@@ -23,7 +22,7 @@ async function rollBingo (array){
             };
 
             for(let i =1;i<=runAroundMax+1;i++){
-                await sleep((Math.pow(i/runAroundMax,4)*500));
+                await sleep((Math.pow(i/runAroundMax,4)*200));
                 $(`#${i%76}`).addClass("run-around");
                 $(`#${i%76 ==  1 ? maxBingoNum :i%76-1}`).removeClass("run-around");
             }
@@ -67,8 +66,10 @@ window.onload=async()=>{
     let numbers=[...Array(maxBingoNum).keys()].map(i=>++i);
     shuffle(numbers);
     $("#start_bingo").click(async()=>{
+        let n = numbers[0];
+        numbers.shift();
         console.log("clicked");
-        numbers = await rollBingo(numbers);
+        await rollBingo(n);
     });
     generateTable(10,maxBingoNum);
 }
