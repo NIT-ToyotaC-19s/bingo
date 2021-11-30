@@ -1,16 +1,13 @@
 body{
-    background-color: black;
+    background-color: white;
 }
 #table{
     margin-top:10vh;
     text-align: center;
 }
-.padding-cell{
-    color:black;
-    border:outset black 5px;
-}
+
 .used-number{
-    background-color:lime;
+    background-color:red;
     color:white;
 }
 .run-around{
@@ -18,7 +15,7 @@ body{
 }
 .table-number{
     border:outset 5px;
-    color:whitesmoke;
+    color:black;
 }
 .last-number{
     background-color: red;

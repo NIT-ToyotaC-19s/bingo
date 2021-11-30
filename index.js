@@ -23,7 +23,7 @@ async function rollBingo (number){
 
             for(let i =1;i<=runAroundMax+1;i++){
                 await sleep((Math.pow(i/runAroundMax,4)*200));
-                $(`#${i%76}`).addClass("run-around");
+                $(`#${(i%76).toString()}`).addClass("run-around");
                 $(`#${i%76 ==  1 ? maxBingoNum :i%76-1}`).removeClass("run-around");
             }
             
@@ -46,18 +46,19 @@ async function rollBingo (number){
             $(`#${number}`).addClass("last-number");
         }
 }
-function generateTable(rowLength,maximum){
+function generateTable(){
     let table="";
-    let  column= Math.ceil(maximum/rowLength);
+    const row = 15
+    const column = 5;
 
     for(let i=0;i<column;i++){
-        table+="<div class=\"row\">"
-        for(let k = 1;k<=rowLength;k++){
-            let bingoNumber = (i==column-1 && k>5) ? "" : i*10+k;
-            let numberClass = (i==column-1 && k>5) ? "padding-cell" : "table-number";
-            table+=`<h1 class="col ${numberClass} " id="${bingoNumber}">${bingoNumber}</h1>`;
+        table+="<tr>"
+        for(let k = 1;k<=row;k++){
+            let bingoNumber = (i*row+k).toString();
+            const  numberClass ="table-number";
+            table+=`<th class=" ${numberClass} " id="${bingoNumber}">${bingoNumber}</th>`;
         }
-        table+="</div>"
+        table+="</tr>"
     }
     $("#table").append(table);
 }
@@ -66,11 +67,11 @@ const maxBingoNum=75;
 window.onload=async()=>{
     let numbers=[...Array(maxBingoNum).keys()].map(i=>++i);
     shuffle(numbers);
+    generateTable();
     $("#start_bingo").click(async()=>{
         let n = numbers[0];
         numbers.shift();
         console.log("clicked");
         await rollBingo(n);
     });
-    generateTable(10,maxBingoNum);
 }
